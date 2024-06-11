@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('banks', function (Blueprint $table) {
+            // Metode Pembayaran
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role', [0, 1, 2])->default(2);
-            $table->text('image')->nullable();
-            $table->rememberToken();
+            $table->string('kode');
+            $table->string('nama');
+            $table->string('kode_transfer'); // VA code
+            $table->string('biaya_admin');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('banks');
     }
 };
