@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('chips', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
-            $table->string('no_telepon');
-            $table->decimal('keterangan');
+            $table->string('no_telepon', 15)->nullable();
+            $table->text('keterangan');
             $table->timestamps();
         });
     }

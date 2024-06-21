@@ -14,6 +14,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            BankSeeder::class,
+            ChipsSeeder::class,
+            ConfigSeeder::class,
+            NomorFakturSeeder::class,
+            NotificationSeeder::class,
+            PromoSeeder::class,
+            ProviderSeeder::class,
+            TransaksiSeeder::class,
+            ChipLogSeeder::class,
+            // tambahkan seeder lain di sini jika ada
+        ]);
         // \App\Models\User::factory(10)->create();
     }
 }

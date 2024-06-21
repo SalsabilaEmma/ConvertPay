@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
+            $table->string('kode');
+            $table->enum('kategori', [0,1])->default(0);
             $table->string('judul');
             $table->string('link');
             $table->timestamps();

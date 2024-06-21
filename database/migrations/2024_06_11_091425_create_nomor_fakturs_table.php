@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('promos', function (Blueprint $table) {
+        Schema::create('nomor_fakturs', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
-            $table->string('judul');
-            $table->text('deskripsi')->nullable();
-            $table->text('image');
-            $table->enum('status', [0, 1])->default(0);
+            $table->string('nomor');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promos');
+        Schema::dropIfExists('nomor_fakturs');
     }
 };

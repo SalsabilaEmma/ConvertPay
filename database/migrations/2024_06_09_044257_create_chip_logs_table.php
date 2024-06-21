@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             // chip, saldo awal, today (pendapatan pulsa), total, real, selisih, ket(limit/kosong),
             $table->string('kode'); // kode master chip
+            $table->string('chip_kode'); // kode master chip
             $table->decimal('saldo_awal');
             // $table->decimal('total'); //today
             $table->decimal('total');

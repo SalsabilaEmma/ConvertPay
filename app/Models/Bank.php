@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Bank extends Model
 {
     use HasFactory;
+    protected $table = 'banks';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'id',
+        'kode',
+        'nama',
+        'kode_transfer',
+        'biaya_admin',
+    ];
 }
