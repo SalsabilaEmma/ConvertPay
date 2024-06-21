@@ -38,6 +38,7 @@ Route::post('set_faktur', function (Request $request) {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+// ************************************* AUTH *********************************************
 // ************************************* MASTER *********************************************
 // ------------------------------------------------------------------------------------------< ROUTE CHIPS >
 Route::post('chips/get', [ChipsController::class, 'data']);
