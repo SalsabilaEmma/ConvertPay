@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('role', [0, 1, 2])->default(2);
             $table->text('image')->nullable();
             $table->rememberToken();
+            $table->dateTime('expired_token')->nullable();
             $table->timestamps();
             //
         });

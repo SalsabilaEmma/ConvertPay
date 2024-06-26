@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\GetterSetter;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\logs\ChipLogController;
 use App\Http\Controllers\logs\TransaksiLogController;
 use App\Http\Controllers\master\BankController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\master\ConfigController;
 use App\Http\Controllers\master\NotificationController;
 use App\Http\Controllers\master\PromoController;
 use App\Http\Controllers\master\ProviderController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,11 +40,27 @@ Route::post('set_faktur', function (Request $request) {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//user
+Route::post('registration',[UserController::class,'store']);
+Route::post('account/verify',[UserController::class,'emailVerify']);
+Route::post('lupa-password',[UserController::class,'lupaPassword']);
+Route::post('lupa-password/verify',[UserController::class,'lupaPasswordVerify']);
+Route::post('password/new',[UserController::class,'newPassword']);
+
+//login
+Route::post('login',[LoginController::class,'index']);
+Route::get('login',function(){
+    return response()->json(['message'=>'Unauthenticated'],401);
+})->name('login');
+
 // ************************************* AUTH *********************************************
 
 // ************************************* MASTER *********************************************
 // ------------------------------------------------------------------------------------------< ROUTE CHIPS >
-Route::post('chips/get', [ChipsController::class, 'data']);
+Route::middleware('auth:sanctum')->group(function(){
+    Route::post('chips/get', [ChipsController::class, 'data']);
+});
 Route::post('chips/store', [ChipsController::class, 'store']);
 Route::post('chips/update', [ChipsController::class, 'update']);
 Route::post('chips/delete', [ChipsController::class, 'delete']);
